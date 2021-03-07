@@ -1,5 +1,6 @@
 ﻿using System;
-// using System.Collections.Generic;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Task_1_1
 {
@@ -11,12 +12,12 @@ namespace Task_1_1
             // Triangle(5);
             // AnotherTriangle(11);
             // XmasTree(3);
-            // Console.WriteLine(SumOfNumbers(1000, 3, 5));
+            // Console.WriteLine(SumOfNumbers(1000));
             // FontAdjustment();
             // ArrayProcessing();
-            // NoPositive(arr);
-            // Console.WriteLine(NonNegativeSum(arr));
-            // Console.WriteLine(TwoDArray(arr));
+            // NoPositive(RandomArray(10, 10, 10));
+            // Console.WriteLine(NonNegativeSum(RandomArray(20)));
+            // Console.WriteLine(TwoDArray(RandomArray(10, 10)));
             Console.ReadKey();
         }
 
@@ -88,20 +89,12 @@ namespace Task_1_1
             int n = (num - 1) / m;
             return (m * 2 + m * (n - 1)) * n / 2;
         }
-        // public static int SumOfNumbers(int num)
-        public static int SumOfNumbers(int N, params int[] list)
+        public static int SumOfNumbers(int N)
         {
             try
             {
                 if (N <= 0) throw new Exception("Arg must be greater than 0");
-                // return _SumOfNumbers(num, 3) + _SumOfNumbers(num, 5) - _SumOfNumbers(num, 3 * 5);
-                int sum = 0, p = 1;
-                foreach (int k in list)
-                {
-                    sum += _SumOfNumbers(N, k);
-                    p *= k;
-                }
-                return sum - _SumOfNumbers(N, p);
+                return (_SumOfNumbers(N, 3) + _SumOfNumbers(N, 5) - _SumOfNumbers(N, 3 * 5));
             }
             catch (Exception e)
             {
@@ -109,7 +102,44 @@ namespace Task_1_1
                 return 0;
             }
         }
-        // public static void FontAdjustment() {}
+        public static void FontAdjustment() {
+            Dictionary<string, bool> fontProps = new Dictionary<string, bool>() {
+                { "bold", false },
+                { "italic", true },
+                { "underline", true }
+            };
+            List<string> active = new List<string>();
+            List<string> keys = new List<string>(fontProps.Keys);
+            
+            while (true)
+            {
+                active.Clear();
+                
+                foreach (KeyValuePair<string, bool> fp in fontProps) {
+                    if (fp.Value) active.Add(Char.ToUpper(fp.Key[0]) + fp.Key.Remove(0, 1));
+                }
+                Console.WriteLine($"Параметры надписи: { (active.Count == 0 ? "None" : String.Join(", ", active.ToArray())) }");
+
+                Console.WriteLine("Введите:");
+                for(int i = 0; i < keys.Count; i++) {
+                    Console.WriteLine($"\t{ i + 1 }: { keys[i] }");
+                }
+                
+                try {
+                    int action = Convert.ToInt32(Console.ReadLine());
+
+                    if (action == 0) break;
+
+                    string key = keys[action - 1];
+
+                    fontProps[key] = !fontProps[key];
+                }
+                catch {
+                    Console.WriteLine("Wrong argument");
+                }
+                
+            }
+        }
         private static int[] RandomArray(int d1)
         {
             Random random = new Random();
