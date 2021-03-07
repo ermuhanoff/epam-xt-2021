@@ -12,7 +12,7 @@ namespace Task_1_2
             // Console.WriteLine(Averages("Викентий хорошо отметил день рождения: покушал пиццу, посмотрел кино, пообщался со студентами в чате"));
             // Console.WriteLine(Doubler("написать программу, которая", "описание"));
             // Console.WriteLine(LowerCase("Антон хорошо начал утро: послушал Стинга, выпил кофе и посмотрел Звёздные Войны"));
-            Console.WriteLine(Validator("я плохо учил русский язык. забываю начинать предложения с заглавной. хорошо, что можно написать программу!"));
+            // Console.WriteLine(Validator("я плохо учил русский язык. забываю начинать предложения с заглавной. хорошо, что можно написать программу!"));
             Console.ReadKey();
         }
 
@@ -35,14 +35,6 @@ namespace Task_1_2
         {
             char[] chars = key.ToCharArray();
             HashSet<char> _chars = new HashSet<char>(chars);
-
-            // string outStr = str;
-            // foreach (var c in _chars)
-            // {
-            //     string _c = c.ToString();
-            //     outStr = outStr.Replace(_c, _c + _c);
-            // }
-            // return outStr;
 
             StringBuilder outStr = new StringBuilder(str);
 
