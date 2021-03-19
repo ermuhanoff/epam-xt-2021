@@ -9,8 +9,6 @@ namespace Task_2_2
         {
             App app = new App();
             app.Start();
-
-            // Console.ReadKey();
         }
     }
 
@@ -659,7 +657,7 @@ namespace Task_2_2
         public UserController()
         {
             userList = new List<User>();
-            AddUser("admin"); //
+            AddUser("admin"); // added user 'admin'
         }
 
         public User ChangeUser()
