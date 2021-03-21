@@ -13,7 +13,39 @@ namespace Task_2_2
 
             Scene scene1 = new Scene(game, "main");
 
-            Level level = new Level(scene1, 50, 30);
+            string levelTempate = "";
+            levelTempate += "##################################################";
+            levelTempate += "#                                                #";
+            levelTempate += "#                                                #";
+            levelTempate += "#######################################          #";
+            levelTempate += "#                                     #          #";
+            levelTempate += "#                #                    #          #";
+            levelTempate += "#                #                    #          #";
+            levelTempate += "##################    ######################     #";
+            levelTempate += "#                         #                      #";
+            levelTempate += "#                         #                      #";
+            levelTempate += "#                         #                      #";
+            levelTempate += "#          #              #                      #";
+            levelTempate += "#          #              #                      #";
+            levelTempate += "#          #              ########               #";
+            levelTempate += "#          #                                     #";
+            levelTempate += "#          #######                               #";
+            levelTempate += "#                #                               #";
+            levelTempate += "#                #            ####################";
+            levelTempate += "#                #                               #";
+            levelTempate += "#                #                               #";
+            levelTempate += "#                #                               #";
+            levelTempate += "#                #                               #";
+            levelTempate += "##########################        #########      #";
+            levelTempate += "#                        #        #              #";
+            levelTempate += "#                        #        #              #";
+            levelTempate += "#                        #        #              #";
+            levelTempate += "#                        #        #              #";
+            levelTempate += "#         ################        #              #";
+            levelTempate += "#                                 #              #";
+            levelTempate += "##################################################";
+
+            Level level = new Level(scene1, 50, 30, levelTempate);
 
             int playerWinScore = 5;
 
@@ -324,13 +356,13 @@ namespace Task_2_2
         public Game game;
         public Scene scene;
 
-        public Level(Scene _scene, int _width, int _height)
+        public Level(Scene _scene, int _width, int _height, string template)
         {
             scene = _scene;
             game = scene.Game;
             width = _width;
             height = _height;
-            levelOutput = GetChars();
+            levelOutput = Build(template);
         }
 
         public bool IsWallAt(int x, int y)
@@ -378,43 +410,6 @@ namespace Task_2_2
 
                 scene.AddObject(new Enemy(scene, x, y, output, name + (i + 1)));
             }
-        }
-
-        public char[] GetChars()
-        {
-            string levelTempate = "";
-            levelTempate += "##################################################";
-            levelTempate += "#                                                #";
-            levelTempate += "#                                                #";
-            levelTempate += "#######################################          #";
-            levelTempate += "#                                     #          #";
-            levelTempate += "#                                     #          #";
-            levelTempate += "#                                     #          #";
-            levelTempate += "##################    ######################     #";
-            levelTempate += "#                         #                      #";
-            levelTempate += "#                         #                      #";
-            levelTempate += "#                         #                      #";
-            levelTempate += "#                         #                      #";
-            levelTempate += "#                         #                      #";
-            levelTempate += "#                         #                      #";
-            levelTempate += "#                                                #";
-            levelTempate += "#                                                #";
-            levelTempate += "#                                                #";
-            levelTempate += "#                                                #";
-            levelTempate += "#                                                #";
-            levelTempate += "#                                                #";
-            levelTempate += "#                                                #";
-            levelTempate += "#                                                #";
-            levelTempate += "#########################                        #";
-            levelTempate += "#                                                #";
-            levelTempate += "#                                                #";
-            levelTempate += "#                                                #";
-            levelTempate += "#                                                #";
-            levelTempate += "#                                                #";
-            levelTempate += "#                                                #";
-            levelTempate += "##################################################";
-
-            return Build(levelTempate);
         }
 
         private char[] Build(string map)
