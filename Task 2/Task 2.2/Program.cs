@@ -556,19 +556,15 @@ namespace Task_2_2
             switch (InputController.PressedKey())
             {
                 case ConsoleKey.DownArrow:
-                    // SetRenderer(1);
                     MoveDown();
                     break;
                 case ConsoleKey.UpArrow:
-                    // SetRenderer(0);
                     MoveUp();
                     break;
                 case ConsoleKey.RightArrow:
-                    // SetRenderer(3);
                     MoveRight();
                     break;
                 case ConsoleKey.LeftArrow:
-                    // SetRenderer(2);
                     MoveLeft();
                     break;
             }
