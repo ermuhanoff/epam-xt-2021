@@ -1,9 +1,8 @@
-﻿using System.Net.Mime;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Task_3._1
+namespace Task_3_1
 {
     class Program
     {
