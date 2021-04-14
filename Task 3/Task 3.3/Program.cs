@@ -31,6 +31,18 @@ namespace Task_3_3
             Console.WriteLine(mixed.GetLanguageType());
 
             // Task 3.3
+
+            Pizzeria pizzeriaDada = new Pizzeria("Dada");
+
+            int order1 = pizzeriaDada.MakeOrder(new PizzaDescription(Pizza.PizzaType.MARGARITA, 35), new PizzaDescription(Pizza.PizzaType.SICILIAN, 40));
+            int order2 = pizzeriaDada.MakeOrder(new PizzaDescription(Pizza.PizzaType.MARGARITA, 30));
+            int order3 = pizzeriaDada.MakeOrder(new PizzaDescription(Pizza.PizzaType.HAWAIIAN, 40));
+            int order4 = pizzeriaDada.MakeOrder(new PizzaDescription(Pizza.PizzaType.PEPPERONI, 25));
+
+            pizzeriaDada.ShowInformation();
+
+            pizzeriaDada.GetPizza(order1);
+            pizzeriaDada.GetPizza(order3);
         }
     }
 
