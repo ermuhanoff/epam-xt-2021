@@ -66,6 +66,36 @@ class FileManagementSystem
         Console.ReadKey();
     }
 
+    public void Restore()
+    {
+        DirectoryInfo backupDirectory = new DirectoryInfo(_backupDir);
+        DirectoryInfo[] backups = backupDirectory.GetDirectories();
+        int choosedBackupIndex;
+
+        if (backups.Length == 0)
+        {
+            Console.WriteLine("No backup!");
+            return;
+        }
+
+        Console.WriteLine("Choose backup:");
+
+        for (int i = 0; i < backups.Length; i++)
+        {
+            Console.WriteLine($"{i + 1}: {backups[i].Name}");
+        }
+
+        Int32.TryParse(Console.ReadLine(), out choosedBackupIndex);
+
+        if (choosedBackupIndex < 1 || choosedBackupIndex > backups.Length)
+        {
+            Console.WriteLine("Incorrect index!");
+            return;
+        }
+
+        RestoreAll(backups[choosedBackupIndex - 1]);
+    }
+
     public void SetPath(string newPath)
     {
         _path = newPath;
@@ -150,36 +180,6 @@ class FileManagementSystem
                 target.CreateSubdirectory(diSourceSubDir.Name);
             CopyAll(diSourceSubDir, nextTargetSubDir);
         }
-    }
-
-    public void Restore()
-    {
-        DirectoryInfo backupDirectory = new DirectoryInfo(_backupDir);
-        DirectoryInfo[] backups = backupDirectory.GetDirectories();
-        int choosedBackupIndex;
-
-        if (backups.Length == 0)
-        {
-            Console.WriteLine("No backup!");
-            return;
-        }
-
-        Console.WriteLine("Choose backup:");
-
-        for (int i = 0; i < backups.Length; i++)
-        {
-            Console.WriteLine($"{i + 1}: {backups[i].Name}");
-        }
-
-        Int32.TryParse(Console.ReadLine(), out choosedBackupIndex);
-
-        if (choosedBackupIndex < 1 || choosedBackupIndex > backups.Length)
-        {
-            Console.WriteLine("Incorrect index!");
-            return;
-        }
-
-        RestoreAll(backups[choosedBackupIndex - 1]);
     }
 
     private void RestoreAll(DirectoryInfo target)
