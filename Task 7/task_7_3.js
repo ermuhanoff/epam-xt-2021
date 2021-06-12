@@ -16,7 +16,7 @@ class Service {
   }
 
   get length() {
-    this.data.size;
+    return this.data.size;
   }
 
   add(item, id = undefined) {
@@ -84,3 +84,5 @@ class Service {
     this.data.set(id, newItem);
   }
 }
+
+
